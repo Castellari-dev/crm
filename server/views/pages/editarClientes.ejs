@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Clientes</title>
+    <script src="https://kit.fontawesome.com/cae5d463b6.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
+    <link rel="stylesheet" href="/assets/style/style.css">
+    <script src="/assets/js/menu.js"></script>
+    <script src="/assets/js/iconsHeader.js"></script>
+    <script>
+        document.addEventListener('readystatechange', event => { 
+          if (event.target.readyState === "interactive") {
+            const options = Array.apply(null, document.getElementById('estado'))
+            options.forEach(option => {
+              if(option.value === '<%= client[0].estado %>' ){
+                option.setAttribute('selected','true')
+                return
+              }
+            })
+          }
+        })
+    </script>
+
+
+
+  </head>
+  <header>
+    <nav class="headerBar">
+      <div class="textHeader">Clientes</div>
+
+      
+        
+      </div>
+
+      <!--          ICONES DE MENU FLUTUANTE DO HEADER             -->
+      <div class="iconsHeaderContainer">
+        <div class="iconsHeader">
+
+          <!--          NOTIFICAÇÕES             -->
+          <div class="notificationDiv">
+            <div class="position-relative">
+              <i class="fa-regular fa-bell" id="notificationBell" onclick="toggleMenu('nSubMenu')"></i>
+              <!--          NOTIFICAÇÃO DINÂMICA             -->
+              <span class="badge rounded-pill badge-notification bg-danger position-absolute top-0 start-100 translate-middle"></span>
+            </div>
+            <div class="notificationMenu" id="nSubMenu">
+              <ul>
+                <li><a href="#">Nenhuma Notificação</a></li>
+              </ul>
+            </div>
+            
+          </div>
+          
+          <!--          ACCOUNT MENU             -->
+          <div class="accountMenuDiv">
+            <img src="/assets/imgs/userPhoto.png" class="userPic" onclick="toggleMenu('subMenu')">
+            <div class="accountMenu" id="subMenu">
+              <div class="userInfo">
+                <img src="/assets/imgs/userPhoto.png">
+                <h2>Marlon Dias</h2>
+              </div>
+              <hr>
+              <ul>
+                <li class="notExpandable"><i class="fa-solid fa-arrow-right-from-bracket"></i><a href="/logout" class="link" id="logout"><p>Logout</p><span class="arrowHeaderMenu"> > </span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </nav>
+  </header>
+  <body>
+  
+    <!--          MENU LATERAL            -->
+    <div class="sidebar">
+  
+      <!-- HOME BUTTON -->
+        <a href="/home" class="homeButton">
+          <span class="icon"><i class="fa-solid fa-house"></i></span>
+          Início
+        </a>
+  
+  
+        <ul class="menu">
+          <li class="expandable"><i class="fa-solid fa-user-group"></i><p>Clientes</p>
+            <ul class="nested">
+              <li><a href="/novo-cliente" class="link">Novo Cliente</a></li>
+              <li><a href="/listar-clientes" class="link">Lista de Clientes</a></li>
+            </ul>
+          </li>
+          <li class="expandable"><i class="fa-regular fa-clipboard"></i><p>Unidade Consumidora</p>
+            <ul class="nested">
+              <li><a href="/nova-unidade-consumidora" class="link">Nova U. Consumidora</a></li>
+              <li><a href="/listar-unidades-consumidoras" class="link">Lista de U. Consumidoras</a></li>
+            </ul>
+          </li>
+          <li class="expandable"></i><i class="fa-solid fa-arrow-trend-up"></i><p>Análise</p>
+            <ul class="nested">
+              <li><a href="/nova-analise" class="link">Nova Análise</a></li>
+              <li><a href="/listar-analises" class="link">Lista de Análises</a></li>
+            </ul>
+          </li>
+          <li class="expandable"><i class="fa-solid fa-receipt"></i></i><p>Refaturamento</p>
+            <ul class="nested">
+              <li><a href="/novo-refaturamento" class="link">Novo Refaturamento</a></li>
+              <li><a href="/listar-refaturamentos" class="link">Lista de Refaturamentos</a></li>
+            </ul>
+          </li> 
+          <li class="expandable"><i class="fa-solid fa-wrench"></i></i></i><p>Ajustes</p>
+            <ul class="nested">
+              <li><a href="/novo-ajuste" class="link">Novo Ajuste</a></li>
+              <li><a href="/listar-ajustes" class="link">Lista de Ajustes</a></li>
+            </ul>
+          </li> 
+          <li class="expandable"><i class="fa-solid fa-sack-xmark"></i><p>Cobrança Indevida</p>
+            <ul class="nested">
+              <li><a href="/nova-cobranca" class="link">Nova Cobrança</a></li>
+              <li><a href="/listar-cobrancas" class="link">Listar Cobranças</a></li>
+            </ul>
+          </li>
+        </ul>
+        <hr>
+  
+        <ul>
+          <li class="notExpandable"><i class="fa-solid fa-arrow-right-from-bracket"></i><a href="/logout" class="link" id="logout"><p>Logout</p></a></li> </li>
+        </ul>   
+          
+    </div>
+  
+  
+  <!-- CONTEUDO DA PAGINA ----------------------->
+  <form action="/editar-cliente" method="POST">
+    <div class="formulario"> 
+      <div class="addButtonDiv"><a href="/novo-cliente" class="buttonLink"><button type="button" class="addNovoButton">Add Novo</button></a></div>
+
+      <div class="formArea">
+      <div class="formContainer">
+        <div class="form-row">
+          <div>
+            <input type="hidden" name="id" value="<%= client[0].id %>"> 
+            <input type="text" id="nome" name="nome" required placeholder="Nome" value="<%= client[0].nome %>">
+          </div>
+          
+          <div>
+            <input type="text" id="cpfCnpj" name="cpfCnpj" required placeholder="CPF/CNPJ" value="<%= client[0].cpfCnpj %>">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div>
+            <input 
+                placeholder="Data de Nascimento" 
+                name="dataDeNascimento" 
+                type="text" 
+                id="dataDeNascimento" 
+                value="<%= client[0].dataDeNascimento ? new Date(client[0].dataDeNascimento).toISOString().substr(0, 10).split('-').reverse().join('/') : '' %>"
+                onfocus="(this.type='date')"
+                onchange="if (!this.value) {this.type='text'; this.value=''}"
+                required
+            />
+        </div>
+          
+          
+          
+          
+          <div>
+            <input type="text" id="email" name="email" required placeholder="E-mail" value="<%= client[0].email %>">
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <input type="tel" id="whatsApp" name="whatsapp" required placeholder="WhatsApp" value="<%= client[0].whatsapp %>">
+          </div>
+          
+          <div>
+            <input type="tel" id="telefone" name="telefone" required placeholder="Telefone" value="<%= client[0].telefone %>">
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <input type="text" id="endereco" name="endereco" required placeholder="Endereço" value="<%= client[0].endereco %>">
+          </div>
+          
+          <div>
+            <input type="text" id="cep" name="cep" required placeholder="CEP" value="<%= client[0].cep %>">
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <input type="text" id="cidade" name="cidade" required placeholder="Cidade" value="<%= client[0].cidade %>">
+          </div>
+          
+          <div>
+            <select id="estado" name="estado" required>
+              <option value="">Estado</option>
+              <option value="Acre">Acre</option>
+              <option value="Alagoas">Alagoas</option>
+              <option value="Amapá">Amapá</option>
+              <option value="Amazonas">Amazonas</option>
+              <option value="Bahia">Bahia</option>
+              <option value="Ceará">Ceará</option>
+              <option value="Distrito Federal">Distrito Federal</option>
+              <option value="Espírito Santo">Espírito Santo</option>
+              <option value="Goiás">Goiás</option>
+              <option value="Maranhão">Maranhão</option>
+              <option value="Mato Grosso">Mato Grosso</option>
+              <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+              <option value="Minas Gerais">Minas Gerais</option>
+              <option value="Pará">Pará</option>
+              <option value="Paraíba">Paraíba</option>
+              <option value="Paraná">Paraná</option>
+              <option value="Pernambuco">Pernambuco</option>
+              <option value="Piauí">Piauí</option>
+              <option value="Rio de Janeiro">Rio de Janeiro</option>
+              <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+              <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+              <option value="Rondônia">Rondônia</option>
+              <option value="Roraima">Roraima</option>
+              <option value="Santa Catarina">Santa Catarina</option>
+              <option value="São Paulo">São Paulo</option>
+              <option value="Sergipe">Sergipe</option>
+              <option value="Tocantins">Tocantins</option>
+            </select>
+            
+          </div>
+        </div>
+        <div class="buttonContainer">
+          <button type="submit" class="editarButton">Editar</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </form> 
+  <script>
+    const form = document.querySelector('form');
+
+// Listen for submit event on the form
+form.addEventListener('submit', () => {
+const dateInput = document.getElementById("dataDeNascimento");
+const dateValue = dateInput.value;
+
+// Check if date value is not empty
+if (dateValue) {
+  const [day, month, year] = dateValue.split("/");
+  const formattedDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+  
+  // Update the input field value with the formatted date
+  dateInput.value = formattedDate;
+}
+});
+
+  </script>
+</body>

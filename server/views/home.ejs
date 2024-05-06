@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Início</title>
+    
+
+    <script src="https://kit.fontawesome.com/cae5d463b6.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
+    <link rel="stylesheet" href="/assets/style/style.css">
+    <script src="/assets/js/menu.js"></script>
+    <script src="/assets/js/iconsHeader.js"></script>
+    <script src="/assets/js/home.js"></script>
+
+
+
+  </head>
+  <header>
+    <nav class="headerBar">
+      <div class="textHeader">Seja Bem vindo</div>
+
+      
+      <!--          ICONES DE MENU FLUTUANTE DO HEADER             -->
+      <div class="iconsHeaderContainer">
+        <div class="iconsHeader">
+
+          <!--          NOTIFICAÇÕES             -->
+          <div class="notificationDiv">
+            <div class="position-relative">
+              <i class="fa-regular fa-bell" id="notificationBell" onclick="toggleMenu('nSubMenu')"></i>
+              <!--          NOTIFICAÇÃO DINÂMICA             -->
+              <span class="badge rounded-pill badge-notification bg-danger position-absolute top-0 start-100 translate-middle"></span>
+            </div>
+            <div class="notificationMenu" id="nSubMenu">
+              <ul>
+                <li><a href="#">Nenhuma Notificação</a></li>
+              </ul>
+            </div>
+            
+          </div>
+          
+          <!--          ACCOUNT MENU             -->
+          <div class="accountMenuDiv">
+            <img src="/assets/imgs/userPhoto.png" class="userPic" onclick="toggleMenu('subMenu')">
+            <div class="accountMenu" id="subMenu">
+              <div class="userInfo">
+                <img src="/assets/imgs/userPhoto.png">
+                <h2>Marlon Dias</h2>
+              </div>
+              <hr>
+              <ul>
+                <li class="notExpandable"><i class="fa-solid fa-arrow-right-from-bracket"></i><a href="/logout" class="link" id="logout"><p>Logout</p><span class="arrowHeaderMenu"> > </span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </nav>
+  </header>
+  <body>
+  
+    <!--          MENU LATERAL            -->
+    <div class="sidebar">
+  
+      <!-- HOME BUTTON -->
+        <a href="/home" class="homeButton">
+          <span class="icon"><i class="fa-solid fa-house"></i></span>
+          Início
+        </a>
+  
+  
+        <ul class="menu">
+          <li class="expandable"><i class="fa-solid fa-user-group"></i><p>Clientes</p>
+            <ul class="nested">
+              <li><a href="/novo-cliente" class="link">Novo Cliente</a></li>
+              <li><a href="/listar-clientes" class="link">Lista de Clientes</a></li>
+            </ul>
+          </li>
+          <li class="expandable"><i class="fa-regular fa-clipboard"></i><p>Unidade Consumidora</p>
+            <ul class="nested">
+              <li><a href="/nova-unidade-consumidora" class="link">Nova U. Consumidora</a></li>
+              <li><a href="/listar-unidades-consumidoras" class="link">Lista de U. Consumidoras</a></li>
+            </ul>
+          </li>
+          <li class="expandable"></i><i class="fa-solid fa-arrow-trend-up"></i><p>Análise</p>
+            <ul class="nested">
+              <li><a href="/nova-analise" class="link">Nova Análise</a></li>
+              <li><a href="/listar-analises" class="link">Lista de Análises</a></li>
+            </ul>
+          </li>
+          <li class="expandable"><i class="fa-solid fa-receipt"></i></i><p>Refaturamento</p>
+            <ul class="nested">
+              <li><a href="/novo-refaturamento" class="link">Novo Refaturamento</a></li>
+              <li><a href="/listar-refaturamentos" class="link">Lista de Refaturamentos</a></li>
+            </ul>
+          </li> 
+          <li class="expandable"><i class="fa-solid fa-wrench"></i></i></i><p>Ajustes</p>
+            <ul class="nested">
+              <li><a href="/novo-ajuste" class="link">Novo Ajuste</a></li>
+              <li><a href="/listar-ajustes" class="link">Lista de Ajustes</a></li>
+            </ul>
+          </li> 
+          <li class="expandable"><i class="fa-solid fa-sack-xmark"></i><p>Cobrança Indevida</p>
+            <ul class="nested">
+              <li><a href="/nova-cobranca" class="link">Nova Cobrança</a></li>
+              <li><a href="/listar-cobrancas" class="link">Listar Cobranças</a></li>
+            </ul>
+          </li>
+        </ul>
+        <hr>
+  
+        <ul>
+          <li class="notExpandable"><i class="fa-solid fa-arrow-right-from-bracket"></i><a href="/logout" class="link" id="logout"><p>Logout</p></a></li> </li>
+        </ul>   
+          
+    </div>
+  
+  
+  <!-- CONTEUDO DA PAGINA ----------------------->
+    
+
+
+
+  <div class="container">
+    <div class="card">
+      <i class="fa-solid fa-chart-column"></i>
+      <div class="card-text">
+        <p>Clientes</p>
+        <h3 data-field="cliente" id="cliente"></h3>
+      </div>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-chart-line"></i>
+      <div class="card-text">
+        <p>Uni Consumidora  </p>
+        <h3 data-field="UC" id="UC"></h3>
+      </div>   
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-chart-column"></i>
+      <div class="card-text">
+        <p>Refaturamentos</p>
+        <h3 data-field="refaturamento" id="refaturamento"></h3>
+      </div>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-chart-column"></i>
+      <div class="card-text">
+        <p>Solic Ajustes</p>
+        <h3 data-field="ajustes" id="ajustes"></h3>
+      </div>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-chart-pie"></i>
+      <div class="card-text">
+        <p>Analise</p>
+        <h3 data-field="analise" id="analise"></h3>
+      </div>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-chart-column"></i>
+      <div class="card-text">
+        <p>Cobrança Indevida</p>
+        <h3 data-field="cobrancaindevida" id="cobrancaindevida"></h3>
+      </div>
+    </div>
+  </div>
+  
+    
+    
+</body>

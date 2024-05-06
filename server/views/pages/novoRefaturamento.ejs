@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Refaturamento</title>
+    <script src="https://kit.fontawesome.com/cae5d463b6.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
+    <link rel="stylesheet" href="/assets/style/style.css">
+    <script src="/assets/js/menu.js"></script>
+    <script src="/assets/js/iconsHeader.js"></script>
+
+
+
+  </head>
+  <header>
+    <nav class="headerBar">
+      <div class="textHeader">Refaturamento</div>
+
+      <!--          ICONES DE MENU FLUTUANTE DO HEADER             -->
+      <div class="iconsHeaderContainer">
+        <div class="iconsHeader">
+
+          <!--          NOTIFICAÇÕES             -->
+          <div class="notificationDiv">
+            <div class="position-relative">
+              <i class="fa-regular fa-bell" id="notificationBell" onclick="toggleMenu('nSubMenu')"></i>
+              <!--          NOTIFICAÇÃO DINÂMICA             -->
+              <span class="badge rounded-pill badge-notification bg-danger position-absolute top-0 start-100 translate-middle"></span>
+            </div>
+            <div class="notificationMenu" id="nSubMenu">
+              <ul>
+                <li><a href="#">Nenhuma Notificação</a></li>
+              </ul>
+            </div>
+            
+          </div>
+          
+          <!--          ACCOUNT MENU             -->
+          <div class="accountMenuDiv">
+            <img src="/assets/imgs/userPhoto.png" class="userPic" onclick="toggleMenu('subMenu')">
+            <div class="accountMenu" id="subMenu">
+              <div class="userInfo">
+                <img src="/assets/imgs/userPhoto.png">
+                <h2>Marlon Dias</h2>
+              </div>
+              <hr>
+              <ul>
+                <li class="notExpandable"><i class="fa-solid fa-arrow-right-from-bracket"></i><a href="/logout" class="link" id="logout"><p>Logout</p><span class="arrowHeaderMenu"> > </span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </nav>
+  </header>
+  <body>
+  
+    <!--          MENU LATERAL            -->
+    <div class="sidebar">
+  
+      <!-- HOME BUTTON -->
+        <a href="/home" class="homeButton">
+          <span class="icon"><i class="fa-solid fa-house"></i></span>
+          Início
+        </a>
+  
+  
+        <ul class="menu">
+          <li class="expandable"><i class="fa-solid fa-user-group"></i><p>Clientes</p>
+            <ul class="nested">
+              <li><a href="/novo-cliente" class="link">Novo Cliente</a></li>
+              <li><a href="/listar-clientes" class="link">Lista de Clientes</a></li>
+            </ul>
+          </li>
+          <li class="expandable"><i class="fa-regular fa-clipboard"></i><p>Unidade Consumidora</p>
+            <ul class="nested">
+              <li><a href="/nova-unidade-consumidora" class="link">Nova U. Consumidora</a></li>
+              <li><a href="/listar-unidades-consumidoras" class="link">Lista de U. Consumidoras</a></li>
+            </ul>
+          </li>
+          <li class="expandable"></i><i class="fa-solid fa-arrow-trend-up"></i><p>Análise</p>
+            <ul class="nested">
+              <li><a href="/nova-analise" class="link">Nova Análise</a></li>
+              <li><a href="/listar-analises" class="link">Lista de Análises</a></li>
+            </ul>
+          </li>
+          <li class="expandable"><i class="fa-solid fa-receipt"></i></i><p>Refaturamento</p>
+            <ul class="nested">
+              <li><a href="/novo-refaturamento" class="link">Novo Refaturamento</a></li>
+              <li><a href="/listar-refaturamentos" class="link">Lista de Refaturamentos</a></li>
+            </ul>
+          </li> 
+          <li class="expandable"><i class="fa-solid fa-wrench"></i></i></i><p>Ajustes</p>
+            <ul class="nested">
+              <li><a href="/novo-ajuste" class="link">Novo Ajuste</a></li>
+              <li><a href="/listar-ajustes" class="link">Lista de Ajustes</a></li>
+            </ul>
+          </li> 
+          <li class="expandable"><i class="fa-solid fa-sack-xmark"></i><p>Cobrança Indevida</p>
+            <ul class="nested">
+              <li><a href="/nova-cobranca" class="link">Nova Cobrança</a></li>
+              <li><a href="/listar-cobrancas" class="link">Listar Cobranças</a></li>
+            </ul>
+          </li>
+        </ul>
+        <hr>
+  
+        <ul>
+          <li class="notExpandable"><i class="fa-solid fa-arrow-right-from-bracket"></i><a href="/logout" class="link" id="logout"><p>Logout</p></a></li> </li>
+        </ul>   
+          
+    </div>
+  
+  
+  <!-- CONTEUDO DA PAGINA ----------------------->
+  <form  id="form">
+    <div class="formulario"  class="form" id="form">
+      <div class="addButtonDiv"><a href="/novo-refaturamento" class="buttonLink"><button type="button" class="addNovoButton">Add Novo</button></a></div>
+
+      <div class="formArea">
+      <div class="formContainer">
+        <div class="form-row">
+          <select name="client_id" placeholder="Selecionar CLiente" id="client_id_select" required="required" class="clientselect">
+            <option value="">Selecione um cliente</option>
+            <% client.forEach(client => { %>
+              <option value="<%= client.id %>">
+                <%= client.nome %>
+              </option>
+              <% }) %>
+          </select>
+        </div>
+  
+        <div>
+          <select name="unidadeConsumidora_id" placeholder="Selecionar Unidade Consumidora" id="unidadeConsumidora"  required="required" class="clientselect">
+            <% unidadeConsumidora.forEach(unidadeConsumidora => { %>
+              <option value="<%= unidadeConsumidora.id %>">
+                <%= unidadeConsumidora.unidadeConsumidora %>
+              </option>
+              <% }) %>
+          </select>
+  
+        <div class="form-row">
+          <textarea name="analise" id="analise" cols="30" rows="5" placeholder="Análise"></textarea>
+        </div>
+        <div class="form-row">
+          <textarea name="solicitacaoTexto" id="solicitacao" cols="30" rows="5" placeholder="Solicitação"></textarea>
+        </div>
+        <div class="form-row">
+            <select name="solicitacaoOpcao" id="solicitacaoRefaturamento" required>
+              <option value="0">Solicitação</option>
+              <option value="Equatorial">Equatorial</option> <!--- Trocar Essas opções pela função pra pegar do backend os clientes-->
+              <option value="Ouvidoria Equatorial">Ouvidoria Equatorial</option>
+              <option value="Aneel">Aneel</option>
+            </select>
+        </div>
+        <div class="form-row">
+          <div class="form-row-3">
+            <input 
+            placeholder="Data da solicitação" 
+            name="dataDaSolicitacao" 
+            type="text" 
+            id="dataDaSolicitacao" 
+            onfocus="(this.type='date')"
+            onchange="if (!this.value) {this.type='text'; this.value=''}"
+            required
+        />
+          </div>
+          
+          <div class="form-row-3">
+              <input type="text" id="protocoloDaSolicitacao" name="protocoloDaSolicitacao" required placeholder="Protocolo da Solicitação">
+          </div>
+          <div class="form-row-3">
+            <select name="statusDaSolicitacao" id="statusDaSolicitacao" required>
+              <option value="">Status</option>
+              <option value="Em análise">Em análise</option>
+              <option value="Concluída">Concluída</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <textarea name="conclusaoDaSolicitacao" id="conclusaoDaSolicitacao" cols="30" rows="5" placeholder="Conclusão da Solicitação"></textarea>
+          </div>
+        <div class="form-row">
+          <input 
+          placeholder="Data da conclusão" 
+          name="dataDaConclusao" 
+          type="text" 
+          id="dataDaConclusao" 
+          onfocus="(this.type='date')"
+          onchange="if (!this.value) {this.type='text'; this.value=''}"
+          required
+      />
+        </div>
+        
+  </div>
+  <div class="buttonContainer">
+    <button type="submit" class="editarButton">Salvar</button>
+  </div>
+    </div>
+  </div>
+  </form>  
+  <script src="/assets/js/novoRefaturamento.js"></script>
+  <script>
+       document.addEventListener("DOMContentLoaded", function(event) {
+      const clienteIdSelector = document.getElementById('client_id_select')
+      const unidadeConsumidoraSelector = document.getElementById('unidadeConsumidora')
+      clienteIdSelector.addEventListener('change', clientGetConsumerUnity) 
+
+      
+      function setConsumerUnities(data) {
+       
+        function addOption(obj) {
+            const option = document.createElement('option')
+            option.setAttribute('value', obj.unidadeConsumidora)
+            option.innerHTML = obj.unidadeConsumidora
+            unidadeConsumidoraSelector.appendChild(option)
+        }
+        addOption(data)
+      }
+
+      function clientGetConsumerUnity() {
+        const client_id = clienteIdSelector.value
+      
+        if (client_id == '') return
+          
+        fetch(`${window.location.origin}/select-unidade-consumidora-by-id/${client_id}`)
+          .then(data => data.json())
+          .then(data => {
+            unidadeConsumidora.innerHTML = ""
+            data.forEach(data => setConsumerUnities(data))
+          })
+          .catch(error => console.log(error))
+      }
+    })
+
+    const form = document.querySelector('form');
+
+// Listen for submit event on the form
+form.addEventListener('submit', () => {
+  const dateInput = document.getElementById("dataDaSolicitacao");
+  const dateValue = dateInput.value;
+
+  // Check if date value is not empty
+  if (dateValue) {
+    const [day, month, year] = dateValue.split("/");
+    const formattedDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    
+    // Update the input field value with the formatted date
+    dateInput.value = formattedDate;
+  }
+});
+
+form.addEventListener('submit', () => {
+  const dateInput = document.getElementById("dataDaConclusao");
+  const dateValue = dateInput.value;
+
+  // Check if date value is not empty
+  if (dateValue) {
+    const [day, month, year] = dateValue.split("/");
+    const formattedDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    
+    // Update the input field value with the formatted date
+    dateInput.value = formattedDate;
+  }})
+
+
+  </script>
+</body>

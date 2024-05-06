@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Analise</title>
+    <script src="https://kit.fontawesome.com/cae5d463b6.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
+    <link rel="stylesheet" href="/assets/style/style.css">
+    <script src="/assets/js/menu.js"></script>
+    <script src="/assets/js/iconsHeader.js"></script>
+    
+    <script>
+         document.addEventListener('readystatechange', event => { 
+    if (event.target.readyState === "interactive") {
+      const options = Array.apply(null, document.getElementById('adicionalBandeiraPonta'))
+      options.forEach(option => {
+        if(option.value === '<%= analise.adicionalBandeiraPonta %>' ){
+          option.setAttribute('selected','true')
+          return
+        }
+      })
+    }
+  })
+
+
+        document.addEventListener('readystatechange', event => { 
+    if (event.target.readyState === "interactive") {
+      const options = Array.apply(null, document.getElementById('adicionalBandeiraForaPonta'))
+      options.forEach(option => {
+        if(option.value === '<%= analise.adicionalBandeiraForaPonta %>' ){
+          option.setAttribute('selected','true')
+          return
+        }
+      })
+    }
+  })
+
+        document.addEventListener('readystatechange', event => { 
+    if (event.target.readyState === "interactive") {
+      const options = Array.apply(null, document.getElementById('adicionalBandeiraHR'))
+      options.forEach(option => {
+        if(option.value === '<%= analise.adicionalBandeiraHR %>' ){
+          option.setAttribute('selected','true')
+          return
+        }
+      })
+    }
+  })
+       
+
+        document.addEventListener('readystatechange', event => { 
+    if (event.target.readyState === "interactive") {
+      const options = Array.apply(null, document.getElementById('faturaOk'))
+      options.forEach(option => {
+        if(option.value === '<%= analise.faturaOk %>' ){
+          option.setAttribute('selected','true')
+          return
+        }
+      })
+    }
+  })
+    </script>
+
+
+  </head>
+  <header>
+    <nav class="headerBar">
+      <div class="textHeader">Analise</div>
+
+      <!--          ICONES DE MENU FLUTUANTE DO HEADER             -->
+      <div class="iconsHeaderContainer">
+        <div class="iconsHeader">
+
+          <!--          NOTIFICAÇÕES             -->
+          <div class="notificationDiv">
+            <div class="position-relative">
+              <i class="fa-regular fa-bell" id="notificationBell" onclick="toggleMenu('nSubMenu')"></i>
+              <!--          NOTIFICAÇÃO DINÂMICA             -->
+              <span class="badge rounded-pill badge-notification bg-danger position-absolute top-0 start-100 translate-middle"></span>
+            </div>
+            <div class="notificationMenu" id="nSubMenu">
+              <ul>
+                <li><a href="#">Nenhuma Notificação</a></li>
+              </ul>
+            </div>
+            
+          </div>
+          
+          <!--          ACCOUNT MENU             -->
+          <div class="accountMenuDiv">
+            <img src="/assets/imgs/userPhoto.png" class="userPic" onclick="toggleMenu('subMenu')">
+            <div class="accountMenu" id="subMenu">
+              <div class="userInfo">
+                <img src="/assets/imgs/userPhoto.png">
+                <h2>Marlon Dias</h2>
+              </div>
+              <hr>
+              <ul>
+                <li class="notExpandable"><i class="fa-solid fa-arrow-right-from-bracket"></i><a href="/logout" class="link" id="logout"><p>Logout</p><span class="arrowHeaderMenu"> > </span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </nav>
+  </header>
+  <body>
+  
+    <!--          MENU LATERAL            -->
+    <div class="sidebar">
+  
+      <!-- HOME BUTTON -->
+        <a href="/home" class="homeButton">
+          <span class="icon"><i class="fa-solid fa-house"></i></span>
+          Início
+        </a>
+  
+  
+        <ul class="menu">
+          <li class="expandable"><i class="fa-solid fa-user-group"></i><p>Clientes</p>
+            <ul class="nested">
+              <li><a href="/novo-cliente" class="link">Novo Cliente</a></li>
+              <li><a href="/listar-clientes" class="link">Lista de Clientes</a></li>
+            </ul>
+          </li>
+          <li class="expandable"><i class="fa-regular fa-clipboard"></i><p>Unidade Consumidora</p>
+            <ul class="nested">
+              <li><a href="/nova-unidade-consumidora" class="link">Nova U. Consumidora</a></li>
+              <li><a href="/listar-unidades-consumidoras" class="link">Lista de U. Consumidoras</a></li>
+            </ul>
+          </li>
+          <li class="expandable"></i><i class="fa-solid fa-arrow-trend-up"></i><p>Análise</p>
+            <ul class="nested">
+              <li><a href="/nova-analise" class="link">Nova Análise</a></li>
+              <li><a href="/listar-analises" class="link">Lista de Análises</a></li>
+            </ul>
+          </li>
+          <li class="expandable"><i class="fa-solid fa-receipt"></i></i><p>Refaturamento</p>
+            <ul class="nested">
+              <li><a href="/novo-refaturamento" class="link">Novo Refaturamento</a></li>
+              <li><a href="/listar-refaturamentos" class="link">Lista de Refaturamentos</a></li>
+            </ul>
+          </li> 
+          <li class="expandable"><i class="fa-solid fa-wrench"></i></i></i><p>Ajustes</p>
+            <ul class="nested">
+              <li><a href="/novo-ajuste" class="link">Novo Ajuste</a></li>
+              <li><a href="/listar-ajustes" class="link">Lista de Ajustes</a></li>
+            </ul>
+          </li> 
+          <li class="expandable"><i class="fa-solid fa-sack-xmark"></i><p>Cobrança Indevida</p>
+            <ul class="nested">
+              <li><a href="/nova-cobranca" class="link">Nova Cobrança</a></li>
+              <li><a href="/listar-cobrancas" class="link">Li
+                
+                star Cobranças</a></li>
+            </ul>
+          </li>
+        </ul>
+        <hr>
+  
+        <ul>
+          <li class="notExpandable"><i class="fa-solid fa-arrow-right-from-bracket"></i><a href="/logout" class="link" id="logout"><p>Logout</p></a></li> </li>
+        </ul>   
+          
+    </div>
+  
+  
+  <!-- CONTEUDO DA PAGINA ----------------------->
+    
+  <form action="/editar-Analise" method="POST" >
+    <div class="formulario"> 
+      <div class="addButtonDiv"><a href="/nova-analise" class="buttonLink"><button type="button" class="addNovoButton">Add Novo</button></a></div>
+
+      <div class="formArea">
+      <div class="formContainer">
+        <div class="form-row">
+
+          <input type="hidden" name="id" id="id" value="<%= analise.id %>">
+
+          <div>
+            <select type="input" name="cliente_id" placeholder="Selecionar CLiente" id="cliente_id" class="clientSearch">
+              <option value="<%= client.id %>"><%= client.nome %></option>
+            </select>
+          </div>
+
+          <div>
+            <select name="unidadeConsumidora_id" placeholder="Selecionar Unidade Consumidora" id="unidadeConsumidora"  required="required" class="clientselect">
+                <option value="<%= unidadeConsumidora.unidadeConsumidora %>"><%= unidadeConsumidora.unidadeConsumidora %></option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-row-3">
+            <input 
+                placeholder="Mês/Ano"
+                name="mesAno"
+                type="text"
+                id="mesAno"
+                value="<%= analise.mesAno ? new Date(analise.mesAno).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' }) : '' %>"
+                onfocus="(this.type='month')"
+                onchange="if (!this.value) {this.type='text'; this.value=''}"
+                required
+            />
+          </div>
+          <div class="form-row-3">
+            <input type="text" id="valorInicial" placeholder="Valor Inicial" name="valorInicial" value="<%= analise.valorInicial %>"/>
+          </div>
+
+          <div class="form-row-3">
+            <input type="text" id="valorFinal" placeholder="Valor Final" name="valorFinal" value="<%= analise.valorFinal %>"/>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-row-3">
+            <input type="text" id="consumoPonta" placeholder="Consumo (Ponta)" name="consumoPonta" value="<%= analise.consumoPonta %>"/>
+          </div>
+
+          <div class="form-row-3">
+            <input type="text" id="consumoForaPonta" placeholder="Consumo (Fora Ponta)" name="consumoForaPonta" value="<%= analise.consumoForaPonta %>"/>
+          </div>
+
+          <div class="form-row-3">
+            <input type="text" id="consumoHR" placeholder="Consumo (HR)" name="consumoHR" value="<%= analise.consumoHR %>"/>
+          </div>
+
+        </div>
+        <div class="form-row">
+          <div class="form-row-3">
+            <input type="text" id="demandaLida" placeholder="Demanda Lida" name="demandaLida" value="<%= analise.demandaLida %>"/>
+          </div>
+          
+          <div class="form-row-3">
+            <input type="text" id="demandaContratada" placeholder="Demanda contratada" name="demandaContratada" value="<%= analise.demandaContratada %>"/>
+          </div>
+          <div class="form-row-3">
+            <input type="text" id="demandaFaturada" placeholder="Demanda Faturada" name="demandaFaturada" value="<%= analise.demandaFaturada %>"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-row-3">
+            <select name="adicionalBandeiraPonta" id="adicionalBandeiraPonta" required>
+              <option value="0">Adicional Bandeira Ponta</option>
+              <option value="Amarela">Amarela</option> 
+              <option value="Vermelha">Vermelha</option>
+            </select>
+          </div>
+          
+          <div class="form-row-3">
+            <select name="adicionalBandeiraForaPonta" id="adicionalBandeiraForaPonta" required>
+              <option value="0">Adicional Bandeira Fora Ponta</option>
+              <option value="Amarela">Amarela</option> 
+              <option value="Vermelha">Vermelha</option>
+            </select>
+          </div>
+          <div class="form-row-3">
+            <select name="adicionalBandeiraHR" id="adicionalBandeiraHR" required>
+              <option value="0">Adicional Band HR</option>
+              <option value="Amarela">Amarela</option> 
+              <option value="Vermelha">Vermelha</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-row-3">
+            <input type="text" id="uferPonta" placeholder="Ufer Ponta" name="ufer" value="<%= analise.ufer %>"/>
+          </div>
+          
+          <div class="form-row-3">
+            <input type="text" id="uferForaPonta" placeholder="Ufer fora ponta" name="uferForaPonta" value="<%= analise.uferForaPonta %>"/>
+          </div>
+          <div class="form-row-3">
+            <input type="text" id="uferHR" placeholder="Ufer HR" name="uferHR" value="<%= analise.uferHR %>"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-row-3">
+            <input type="text" id="compensacaoDicMensal" placeholder="Compensação Dic Mensal" name="compensacaoDicMensal" value="<%= analise.compensacaoDicMensal %>"/>
+          </div>
+          
+          <div class="form-row-3">
+            <input type="text" id="compensacaoDicTrimestral" placeholder="Compensação Dic Trimestral" name="compensacaoDicTrimestral" value="<%= analise.compensacaoDicTrimestral %>"/>
+          </div>
+          <div class="form-row-3">
+            <input type="text" id="compensacaoDicAnual" placeholder="Compensação Dic Anual" name="compensacaoDicAnual" value="<%= analise.compensacaoDicAnual %>"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-row-3">
+            <input type="text" id="compensacaoDecMensal" placeholder="Compensação Dec Mensal" name="compensacaoDecMensal" value="<%= analise.compensacaoDecMensal %>"/>
+          </div>
+          
+          <div class="form-row-3">
+            <input type="text" id="compensacaoDecTrimestral" placeholder="Compensação Dec Trimestral" name="compensacaoDecTrimestral" value="<%= analise.compensacaoDecTrimestral %> "/>
+          </div>
+          <div class="form-row-3">
+            <input type="text" id="compensacaoDecAnual" placeholder="Compensação Dec Anual" name="compensacaoDecAnual" value="<%= analise.compensacaoDecAnual %>"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-row-3">
+            <input type="text" id="compensacaoFicMensal" placeholder="Compensação Fic Mensal" name="compensacaoFicMensal" value="<%= analise.compensacaoFicMensal %>"/>
+          </div>
+          
+          <div class="form-row-3">
+            <input type="text" id="compensacaoFicTrimestral" placeholder="Compensação Fic Trimestral" name="compensacaoFicTrimestral" value="<%= analise.compensacaoFicTrimestral %>"/>
+          </div>
+          <div class="form-row-3">
+            <input type="text" id="compensacaoFicAnual" placeholder="Compensação Fic Anual" name="compensacaoFicAnual" value="<%= analise.compensacaoFicAnual %>"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-row-3">
+            <input type="text" id="compensacaoFecMensal" placeholder="Compensação Fec Mensal" name="compensacaoFecMensal" value="<%= analise.compensacaoFecMensal %>"/>
+          </div>
+          
+          <div class="form-row-3">
+            <input type="text" id="compensacaoFecTrimestral" placeholder="Compensação Fec Trimestral" name="compensacaoFecTrimestral" value="<%= analise.compensacaoFecTrimestral %>"/>
+          </div>
+          <div class="form-row-3">
+            <input type="text" id="compensacaoFecAnual" placeholder="Compensação Fec Anual" name="compensacaoFecAnual" value="<%= analise.compensacaoFecAnual %>"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-row-3">
+            <input type="text" id="compensacaoDMICMensal" placeholder="Compensação DMIC Mensal" name="compensacaoDMICMensal" value="<%= analise.compensacaoDMICMensal %>"/>
+          </div>
+          
+          <div class="form-row-3">
+            <input type="text" id="compensacaoDMICTrimestral" placeholder="Compensação DMIC Trimestral" name="compensacaoDMICTrimestral" value="<%= analise.compensacaoDMICTrimestral %>"/>
+          </div>
+          <div class="form-row-3">
+            <input type="text" id="compensacaoDMICAnual" placeholder="Compensação DMIC Anual" name="compensacaoDMICAnual" value="<%= analise.compensacaoDMICAnual %>"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-row-3">
+            <input type="text" id="multa" placeholder="Multa" name="multa" value="<%= analise.multa %>"/>
+          </div>
+          
+          <div class="form-row-3">
+            <input type="text" id="juros" placeholder="Juros" name="juros" value="<%= analise.juros %>"/>
+          </div>
+          <div class="form-row-3">
+            <input type="text" id="outros" placeholder="Outros" name="outros" value="<%= analise.outros %>"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <select name="faturaOk" id="faturaOk" placeholder="Fatura está ok?" required>
+            <option value="">Fatura está okay?</option>
+            <option value="Sim">Sim</option> <!--- Trocar Essas opções pela função pra pegar do backend os clientes-->
+            <option value="Não">Não</option>
+          </select>
+        </div>
+  </div>
+
+  <div class="buttonContainer">
+    <button type="submit" class="editarButton">Salvar</button>
+  </div>
+
+</div>
+    </div>
+    
+  </form>  
+
+</body>

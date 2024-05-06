@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Refaturamento</title>
+    
+    <script src="https://kit.fontawesome.com/cae5d463b6.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
+    <link rel="stylesheet" href="/assets/style/style.css">
+    <script src="/assets/js/menu.js"></script>
+    <script src="/assets/js/iconsHeader.js"></script>
+    <script src="/assets/js/tabelaRefaturamento.js"></script>
+
+
+
+  </head>
+  <header>
+    <nav class="headerBar">
+      <div class="textHeader">Refaturamento</div>
+
+      <div class="searchboxDiv">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+          <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-search-3" viewBox="0 0 40 41">
+            <path d="M26.51 28.573c-2.803 2.34-6.412 3.748-10.35 3.748C7.236 32.32 0 25.087 0 16.16 0 7.236 7.235 0 16.16 0c8.926 0 16.16 7.235 16.16 16.16 0 4.213-1.61 8.048-4.25 10.925L40 39.015l-1.524 1.524L26.51 28.572zm-10.35 2.132c8.033 0 14.545-6.512 14.545-14.544S24.193 1.617 16.16 1.617 1.617 8.128 1.617 16.16c0 8.033 6.512 14.545 14.545 14.545z"
+            fill-rule="evenodd" />
+          </symbol>
+          <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-clear-1" viewBox="0 0 20 20">
+            <path d="M9.408 10L.296.888 0 .592.592 0l.296.296L10 9.408 19.112.296 19.408 0 20 .592l-.296.296L10.592 10l9.112 9.112.296.296-.592.592-.296-.296L10 10.592.888 19.704.592 20 0 19.408l.296-.296L9.408 10z" fill-rule="evenodd" />
+          </symbol>
+        </svg>
+        <div class="sbx-custom__input-container">
+          <form novalidate="novalidate" onsubmit="return false;" class="searchbox sbx-custom">
+            <div role="search" class="sbx-twitter__wrapper">
+              <input type="search" name="search" placeholder="Pesquisar" autocomplete="off" required="required" class="sbx-custom__input">
+              <button type="submit" title="Submit your search query." class="sbx-custom__submit">
+                <svg role="img" aria-label="Search">
+                  <use xlink:href="#sbx-icon-search-3"></use>
+                </svg>
+              </button>
+              <button type="reset" title="Clear the search query." class="sbx-custom__reset">
+                <svg role="img" aria-label="Reset">
+                  <use xlink:href="#sbx-icon-clear-1"></use>
+                </svg>
+              </button>
+            </div>
+            </form>
+        </div>
+        
+      </div>
+
+      <!--          ICONES DE MENU FLUTUANTE DO HEADER             -->
+      <div class="iconsHeaderContainer">
+        <div class="iconsHeader">
+
+          <!--          NOTIFICAÇÕES             -->
+          <div class="notificationDiv">
+            <div class="position-relative">
+              <i class="fa-regular fa-bell" id="notificationBell" onclick="toggleMenu('nSubMenu')"></i>
+              <!--          NOTIFICAÇÃO DINÂMICA             -->
+              <span class="badge rounded-pill badge-notification bg-danger position-absolute top-0 start-100 translate-middle"></span>
+            </div>
+            <div class="notificationMenu" id="nSubMenu">
+              <ul>
+                <li><a href="#">Nenhuma Notificação</a></li>
+              </ul>
+            </div>
+            
+          </div>
+          
+          <!--          ACCOUNT MENU             -->
+          <div class="accountMenuDiv">
+            <img src="/assets/imgs/userPhoto.png" class="userPic" onclick="toggleMenu('subMenu')">
+            <div class="accountMenu" id="subMenu">
+              <div class="userInfo">
+                <img src="/assets/imgs/userPhoto.png">
+                <h2>Marlon Dias</h2>
+              </div>
+              <hr>
+              <ul>
+                <li class="notExpandable"><i class="fa-solid fa-arrow-right-from-bracket"></i><a href="/logout" class="link" id="logout"><p>Logout</p><span class="arrowHeaderMenu"> > </span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </nav>
+  </header>
+  <body>
+  
+    <!--          MENU LATERAL            -->
+    <div class="sidebar">
+  
+      <!-- HOME BUTTON -->
+        <a href="/home" class="homeButton">
+          <span class="icon"><i class="fa-solid fa-house"></i></span>
+          Início
+        </a>
+  
+  
+        <ul class="menu">
+          <li class="expandable"><i class="fa-solid fa-user-group"></i><p>Clientes</p>
+            <ul class="nested">
+              <li><a href="/novo-cliente" class="link">Novo Cliente</a></li>
+              <li><a href="/listar-clientes" class="link">Lista de Clientes</a></li>
+            </ul>
+          </li>
+          <li class="expandable"><i class="fa-regular fa-clipboard"></i><p>Unidade Consumidora</p>
+            <ul class="nested">
+              <li><a href="/nova-unidade-consumidora" class="link">Nova U. Consumidora</a></li>
+              <li><a href="/listar-unidades-consumidoras" class="link">Lista de U. Consumidoras</a></li>
+            </ul>
+          </li>
+          <li class="expandable"></i><i class="fa-solid fa-arrow-trend-up"></i><p>Análise</p>
+            <ul class="nested">
+              <li><a href="/nova-analise" class="link">Nova Análise</a></li>
+              <li><a href="/listar-analises" class="link">Lista de Análises</a></li>
+            </ul>
+          </li>
+          <li class="expandable"><i class="fa-solid fa-receipt"></i></i><p>Refaturamento</p>
+            <ul class="nested">
+              <li><a href="/novo-refaturamento" class="link">Novo Refaturamento</a></li>
+              <li><a href="/listar-refaturamentos" class="link">Lista de Refaturamentos</a></li>
+            </ul>
+          </li> 
+          <li class="expandable"><i class="fa-solid fa-wrench"></i></i></i><p>Ajustes</p>
+            <ul class="nested">
+              <li><a href="/novo-ajuste" class="link">Novo Ajuste</a></li>
+              <li><a href="/listar-ajustes" class="link">Lista de Ajustes</a></li>
+            </ul>
+          </li> 
+          <li class="expandable"><i class="fa-solid fa-sack-xmark"></i><p>Cobrança Indevida</p>
+            <ul class="nested">
+              <li><a href="/nova-cobranca" class="link">Nova Cobrança</a></li>
+              <li><a href="/listar-cobrancas" class="link">Listar Cobranças</a></li>
+            </ul>
+          </li>
+        </ul>
+        <hr>
+  
+        <ul>
+          <li class="notExpandable"><i class="fa-solid fa-arrow-right-from-bracket"></i><a href="/logout" class="link" id="logout"><p>Logout</p></a></li> </li>
+        </ul>   
+          
+    </div>
+  
+  
+  <!-- CONTEUDO DA PAGINA ----------------------->
+  <% debugger %>
+  <div class="tableContainer">
+    <div class="addButtonDiv"><a href="/novo-refaturamento" class="buttonLink"><button type="button" class="addNovoButton">Add Novo</button></a></div>
+    <div class="tableList" id="tableList">
+      <table class="table">
+       <thead>
+          <tr>
+            <th class="checkboxTable">
+              <input type="checkbox" id="check-all">
+            </th>
+            <th data-field="ID">Id</th>
+            <th data-field="unidadeConsumidora">Un Consumidora</th>
+            <th data-field="nome">Cliente</th>
+            <th data-field="dataDaSolicitacao">Data Solicitação</th>
+            <th data-field="protocolo">Protocolo</th>
+            <th data-field="statusDaSolicitacao">Status</th>
+            <th></th>
+          </tr>
+        </thead>
+     
+          <tbody class="tbody">
+            <% refaturamento.forEach(refaturamento => { %>
+            <tr>
+              <td>
+                <input type="checkbox">
+              </td>
+              <td data-field="ID"><%= refaturamento.cliente_id %></td>
+              <td data-field="unidadeConsumidora"><%= refaturamento.unidadeConsumidora_id %></td>
+              <td data-field="nome"><%= refaturamento.nome %></td>
+              <td data-field="dataDaSolicitacao">
+                <% if (refaturamento.dataDaSolicitacao) { %>
+                  <%= new Date(refaturamento.dataDaSolicitacao).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }) %>
+                <% } else { %>
+                <% } %>
+              </td>
+              <td data-field="protocolo"><%= refaturamento.protocoloDaSolicitacao %></td>
+              <td data-field="statusDaSolicitacao"><%= refaturamento.statusDaSolicitacao %></td>
+              <td >
+                <button class="edit-btn">
+                  <a href="/editar-refaturamento/<%= refaturamento.id %>" >
+                    <i class="fa-solid fa-pen editar"></i>
+                  </a>
+                </button>
+                <button class="delete-btn" id="delete-btn-<%= refaturamento.id %>">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+            <% }) %>
+            <div class="overlay">
+              <div class="popup">
+                <h2>Confirmar Exclusão</h2>
+                <hr>
+                <p>Tem Certeza que deseja continuar?</p>
+                <div class="buttonPopupContainer">
+                  <button href="#" class="yesButton" id="confirm-delete" >Sim</button>
+                  <button href="#" class="noButton" id="cancel-delete">Não</button>
+                </div>
+              </div>
+            </div>
+            
+
+          </tbody>
+        
+      </table>    
+    </div>
+  </div>
+<script>
+   // Get the search input element
+const searchInput = document.querySelector('.sbx-custom__input');
+console.log(searchInput);
+// Get the table body element
+const tableBody = document.querySelector('.tbody');
+console.log(tableBody);
+// Add an event listener to the search input
+searchInput.addEventListener('input', () => {
+  // Get the search query
+  const searchQuery = searchInput.value.trim().toLowerCase();
+
+  // Loop through each row of the table
+  for (const row of tableBody.rows) {
+    // Get the content of the "Cliente" column in the current row
+    const cliente = row.querySelector('[data-field="nome"]').textContent.toLowerCase();
+    console.log(cliente);
+    // If the search query is found in the "Cliente" column, show the row
+    if (cliente.includes(searchQuery)) {
+      row.style.display = '';
+    } else {
+      // Otherwise, hide the row
+      row.style.display = 'none';
+    }
+  }
+});
+
+const deleteButtons = Array.from( document.querySelectorAll('button.delete-btn'))
+  const popup = document.getElementsByClassName("overlay")[0]
+  const closePopUp = document.getElementById("cancel-delete")
+  const confirmDelete = document.getElementById("confirm-delete")
+
+
+  deleteButtons.forEach(button => {
+    button.addEventListener('click', function() {
+    popup.style.display = 'block'
+  
+    confirmDelete.onclick = function() {
+      const id = button.id.replace(/.*-/g, '')
+      deleteClient(id)
+      popup.style.display = 'none'
+      location.reload();
+    }
+  })
+})
+
+  closePopUp.addEventListener('click', function(){
+    popup.style.display = 'none' 
+})
+
+// EDITAR ROTA PRA DELETE E PODER REPETIR EM QUALQUER OUTRA PÁGINA
+
+  function deleteClient(id) {
+    fetch(`${window.location.origin}/delete-refaturamento-db/${id}`, { 
+    method: 'DELETE'
+    })
+      .then(res => res.text())
+      .then(res => console.log(res))
+  }
+</script>
+</body>

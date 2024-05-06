@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM</title>
+    <link rel="stylesheet" href="/assets/style/login.css">
+    <script src="https://kit.fontawesome.com/cae5d463b6.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/login.js"></script>
+</head>
+<body>
+    
+
+    <section class="bannerSection">
+        <h3 class="bannerText">Gestão energética eficiente.</h3>
+    </section>
+
+    <section class="loginSection">
+
+        <div class="imageLogo">
+            <img src="assets/imgs/logo.png" alt="">
+        </div>
+
+        <p class="loginTitle">Entrar</p>
+
+        <div class="stayConnected">
+            <input type="checkbox" checked id="checkbox" />
+            <label for="checkbox"></label>
+        </div>
+
+
+        <p class="stayConnectedText">Manter conectado</p>
+        <form action="/login">
+            <input type="text" id="loginInput" placeholder="E-mail"> 
+            <input type="password" id="passwordInput" placeholder="Senha">
+    
+            <div class="button">
+                <button type="submit" class="loginButton" id="login-button">Entrar</button>
+            </div>
+    
+        </form>
+
+    </section>
+
+      <div class="overlay">
+        <div class="popup">
+          <h2>Erro no Login</h2>
+          <hr>
+          <p>O usuário ou senha inseridos estão incorretos</p>
+          <div class="buttonPopupContainer">
+            <button href="#" class="noButton" id="closePopup">Fechar</button>
+          </div>
+        </div>
+      </div>
+
+</html>
